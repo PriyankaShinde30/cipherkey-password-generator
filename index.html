@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cipherkey Password Generator</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-layout">
+      <header class="header-center">
+        <img src="assets/passwordgenerator.svg" alt="CipherKey Logo" />
+        <h1>Secure Password Generator</h1>
+        <p>Generate strong, secure passwords instantly.</p>
+      </header>
+      <section class="app-generator">
+        <section class="password-display">
+          <input
+            type="text"
+            id="password-input"
+            class="password-input"
+            readonly
+            autocomplete="off"
+            spellcheck="false"
+            placeholder="Click Generate"
+          />
+          <div class="password-actions">
+            <button
+              type="button"
+              class="copy-button"
+              aria-label="copy password"
+            >
+              <!-- ICON -->
+            </button>
+            <button
+              type="button"
+              class="refresh-button"
+              aria-label="refresh password"
+            >
+              <!-- ICON -->
+            </button>
+          </div>
+        </section>
+        <section class="strength">
+          <div class="strength-header">
+            <span>Strength</span>
+            <span id="strength-text">Very Strong</span>
+          </div>
+          <div class="strength-bar">
+            <div class="strength-fill"></div>
+          </div>
+        </section>
+        <section class="password-length">
+          <div class="password-length-header">
+            <label for="length-slider">Password Length</label>
+            <span id="length-value">16</span>
+          </div>
+          <input type="range" id="length-slider" min="4" max="64" value="16" />
+        </section>
+        <section class="character-options">
+          <h3>Character Options</h3>
+          <div class="option-list">
+            <div class="option-item">
+              <label for="uppercase">Uppercase (A-Z)</label>
+              <label class="switch">
+                <input type="checkbox" id="uppercase" checked />
+                <span class="slider"></span>
+              </label>
+            </div>
+            <div class="option-item">
+              <label for="lowercase">Lowercase (a–z)</label>
+              <label class="switch">
+                <input type="checkbox" id="lowercase" checked />
+                <span class="slider"></span>
+              </label>
+            </div>
+            <div class="option-item">
+              <label for="numbers">Numbers (0–9)</label>
+              <label class="switch">
+                <input type="checkbox" id="numbers" checked />
+                <span class="slider"></span>
+              </label>
+            </div>
+            <div class="option-item">
+              <label for="symbols">Symbols (!@#$%)</label>
+              <label class="switch">
+                <input type="checkbox" id="symbols" checked />
+                <span class="slider"></span>
+              </label>
+            </div>
+          </div>
+        </section>
+        <section class="customizations">
+          <h3>Customization</h3>
+          <div class="option-list">
+            <div class="option-item">
+              <label for="exclude-similar">Exclude similar (O, 0, I, l)</label>
+              <label class="switch">
+                <input type="checkbox" id="exclude-similar" checked />
+                <span class="slider"></span>
+              </label>
+            </div>
+            <div class="option-item">
+              <label for="exclude-ambiguous">Exclude ambiguous symbols</label>
+              <label class="switch">
+                <input type="checkbox" id="exclude-ambiguous" checked />
+                <span class="slider"></span>
+              </label>
+            </div>
+            <div class="option-item">
+              <label for="no-repeated-characters">No repeated characters</label>
+              <label class="switch">
+                <input type="checkbox" id="no-repeated-characters" checked />
+                <span class="slider"></span>
+              </label>
+            </div>
+            <div class="option-item">
+              <label for="avoid-sequential-characters"
+                >Avoid sequential characters</label
+              >
+              <label class="switch">
+                <input
+                  type="checkbox"
+                  id="avoid-sequential-characters"
+                  checked
+                />
+                <span class="slider"></span>
+              </label>
+            </div>
+            <div class="option-item">
+              <label for="include-spaces">Include spaces</label>
+              <label class="switch">
+                <input type="checkbox" id="include-spaces" checked />
+                <span class="slider"></span>
+              </label>
+            </div>
+            <div class="option-item">
+              <label for="start-with-letter">Start with letter</label>
+              <label class="switch">
+                <input type="checkbox" id="start-with-letter" checked />
+                <span class="slider"></span>
+              </label>
+            </div>
+          </div>
+        </section>
+        <section class="quick-presets">
+          <h3>Quick Presets</h3>
+          <div class="preset-list">
+            <button type="button" class="preset-button" data-preset="personal">
+              Personal
+            </button>
+            <button type="button" class="preset-button" data-preset="work">
+              Work
+            </button>
+            <button type="button" class="preset-button" data-preset="banking">
+              Banking
+            </button>
+            <button type="button" class="preset-button" data-preset="gaming">
+              Gaming
+            </button>
+            <button type="button" class="preset-button" data-preset="ultra">
+              Ultra Secure
+            </button>
+          </div>
+        </section>
+        <section class="generator-button">
+          <button type="button" id="generate-btn" class="generate-button">
+            Generate Secure Password
+          </button>
+        </section>
+        <section class="password-history">
+          <h3>Recent Passwords</h3>
+          <div id="history-list"></div>
+        </section>
+      </section>
+      <footer class="app-footer">
+        <p>
+          Passwords are generated locally in your browser. Nothing is ever sent
+          to a server.
+        </p>
+      </footer>
+    </main>
+  </body>
+</html>
