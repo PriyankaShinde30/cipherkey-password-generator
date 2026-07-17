@@ -295,6 +295,10 @@ input {
   margin-bottom: 2rem;
 }
 
+/* History of Passwords */
+
+
+
 /* Footer */
 
 .app-footer {
@@ -305,4 +309,54 @@ input {
   color: var(--text-secondary);
 
   font-size: 0.9rem;
+}
+
+/* Responsive Design */
+
+@media (max-width: 768px) {
+
+  .app-layout {
+    padding: 1rem;
+  }
+
+  .app-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+  }
+
+  .header-right {
+    align-self: flex-end;
+  }
+
+  .password-display {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .password-actions {
+    justify-content: flex-end;
+  }
+
+  .preset-list {
+    justify-content: center;
+  }
+
+}
+
+@media (max-width: 480px) {
+
+  .app-generator {
+    padding: 1.25rem;
+  }
+
+  .option-item {
+    font-size: 0.9rem;
+  }
+
+  .generate-button {
+    font-size: 0.95rem;
+  }
+
 }
