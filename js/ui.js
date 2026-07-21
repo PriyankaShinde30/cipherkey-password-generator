@@ -36,3 +36,47 @@ const presetButtons = document.querySelectorAll(".preset-button");
 //History
 const historyList = document.querySelector(".history-list");
 const clearHistoryButton = document.querySelector(".clear-history-btn");
+
+function updateLengthValue() {
+  lengthValue.textContent = lengthSlider.value;
+}
+
+function showPassword(password) {
+  passwordInput.value = password;
+}
+
+function clearPassword() {
+  passwordInput.value = "";
+}
+
+function getOptions() {
+  return {
+    length: Number(lengthSlider.value),
+    uppercase: uppercaseCheckbox.checked,
+    lowercase: lowercaseCheckbox.checked,
+    numbers: numbersCheckbox.checked,
+    symbols: symbolsCheckbox.checked,
+    excludeSimilar: excludeSimilarCheckbox.checked,
+    excludeAmbiguous: excludeAmbiguousCheckbox.checked,
+    noRepeated: noRepeatedCheckbox.checked,
+    avoidSequential: avoidSequentialCheckbox.checked,
+    includeSpaces: includeSpacesCheckbox.checked,
+    startWithLetter: startWithLetterCheckbox.checked,
+  };
+}
+
+function updateStrengthUI(level, width, color) {
+  strengthText.textContent = level;
+  strengthFill.style.width = `${width}%`;
+  strengthFill.style.backgroundColor = color;
+}
+
+function renderHistory(history) {
+  historyList.innerHTML = "";
+
+  history.forEach((password) => {
+    const li = document.createElement("li");
+    li.textContent = password;
+    historyList.appendChild(li);
+  });
+}
