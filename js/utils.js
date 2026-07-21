@@ -43,13 +43,33 @@ function removeDuplicateCharacters(text) {
 }
 
 function hasSequentialCharacters(password) {
-  for (let i = 0; i < password.length - 2; i++) {
-    const first = password.charCodeAt(i);
-    const second = password.charCodeAt(i + 1);
-    const third = password.charCodeAt(i + 2);
+  const text = password.toLowerCase();
 
-    if (second === first + 1 && third === second + 1) {
-      return true;
+  for (let i = 0; i < text.length - 2; i++) {
+    const first = text.charCodeAt(i);
+    const second = text.charCodeAt(i + 1);
+    const third = text.charCodeAt(i + 2);
+
+    const isLetters =
+      /[a-z]/.test(text[i]) &&
+      /[a-z]/.test(text[i + 1]) &&
+      /[a-z]/.test(text[i + 2]);
+
+    const isNumbers =
+      /[0-9]/.test(text[i]) &&
+      /[0-9]/.test(text[i + 1]) &&
+      /[0-9]/.test(text[i + 2]);
+
+    if (isLetters || isNumbers) {
+      // ascending: abc, 123
+      if (second === first + 1 && third === second + 1) {
+        return true;
+      }
+
+      // descending: cba, 321
+      if (second === first - 1 && third === second - 1) {
+        return true;
+      }
     }
   }
 
