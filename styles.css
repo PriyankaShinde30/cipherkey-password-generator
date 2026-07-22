@@ -230,6 +230,12 @@ input {
   font-weight: 500;
 }
 
+.copy-button,
+.history-copy-button,
+.history-delete-button {
+    color: var(--text-primary);
+}
+
 /* App Generator  */
 
 .app-generator, .password-history{ 
@@ -272,6 +278,7 @@ input {
     outline: none;
 
     font-size: 1.1rem;
+    color: var(--text-primary);
 }
 
 .password-actions {
@@ -708,6 +715,7 @@ input {
     font-size:1.1rem;
     font-weight:700;
     word-break: break-all;
+    color: var(--text-primary);
 }
 
 .history-date {
