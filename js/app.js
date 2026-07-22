@@ -1,7 +1,10 @@
 //Initialize the Application
 document.addEventListener("DOMContentLoaded", () => {
+  loadTheme();
   updateLengthValue();
   clearPassword();
+
+  themeToggle.addEventListener("click", toggleTheme);
 
   // Load and display password history
   if (typeof getPasswordHistory === "function") {
@@ -17,14 +20,10 @@ document.addEventListener("DOMContentLoaded", () => {
   generateButton.addEventListener("click", () => {
     const options = getOptions();
 
-    console.log(options);
-
     const password = generatePassword(options);
 
-    console.log(password);
-
     if (!password) {
-      alert("Unable to generate a password with the selected options.");
+      showToast("Unable to generate a password with the selected options.");
       return;
     }
 
@@ -42,12 +41,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Copy password button
   if (copyButton && typeof copyPassword === "function") {
-    copyButton.addEventListener("click", () => {
+    copyButton.addEventListener("click", async () => {
       const password = passwordInput.value;
 
       if (!password) return;
 
-      copyPassword(password);
+      await copyPassword(password);
+
+      copyButton.innerHTML = '<i class="fa-solid fa-check"></i>';
+
+      setTimeout(() => {
+        copyButton.innerHTML = '<i class="fa-regular fa-copy"></i>';
+      }, 1000);
     });
   }
 
@@ -56,14 +61,6 @@ document.addEventListener("DOMContentLoaded", () => {
     clearHistoryButton.addEventListener("click", () => {
       clearPasswordHistory();
       renderHistory([]);
-    });
-  }
-
-  // Preset selector
-  if (presetButtons && typeof applyPreset === "function") {
-    presetSelect.addEventListener("change", () => {
-      applyPreset(presetButtons.value);
-      updateLengthValue();
     });
   }
 });
