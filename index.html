@@ -5,10 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cipherkey Password Generator</title>
     <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
   </head>
   <body>
     <main class="app-layout">
       <header class="header-center">
+        <button
+          id="theme-toggle"
+          class="theme-toggle"
+          aria-label="Toggle Theme"
+        >
+          <i class="fa-solid fa-moon"></i>
+        </button>
         <img src="assets/passwordgenerator.svg" alt="CipherKey Logo" />
         <h1>Secure Password Generator</h1>
         <p>Generate strong, secure passwords instantly.</p>
@@ -25,19 +36,8 @@
             placeholder="Click Generate"
           />
           <div class="password-actions">
-            <button
-              type="button"
-              class="copy-button"
-              aria-label="copy password"
-            >
-              <!-- ICON -->
-            </button>
-            <button
-              type="button"
-              class="refresh-button"
-              aria-label="refresh password"
-            >
-              <!-- ICON -->
+            <button class="copy-button">
+              <i class="fa-regular fa-copy"></i>
             </button>
           </div>
         </section>
@@ -175,18 +175,7 @@
           <button class="clear-history-btn">Clear</button>
         </div>
 
-        <div class="history-list">
-          <div class="history-item">
-            <div class="history-info">
-              <p class="history-password">Ab@12#fg...</p>
-            </div>
-
-            <div class="history-actions">
-              <button class="history-copy-btn">📋</button>
-              <button class="history-delete-btn">🗑️</button>
-            </div>
-          </div>
-        </div>
+        <div class="history-list"></div>
       </section>
       <footer class="app-footer">
         <p>
@@ -195,6 +184,7 @@
         </p>
       </footer>
     </main>
+    <div id="toast-container"></div>
     <script src="js/utils.js"></script>
     <script src="js/generator.js"></script>
     <script src="js/strength.js"></script>
